@@ -3,9 +3,11 @@
   "version": "0.2.4",
   "manifest_version": 2,
   "description": "Play LÖVE games in your browser!",
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": true
+  "app": {
+   "background": {
+      "scripts": ["background.js"],
+      "persistent": true
+    },
   },
   "browser_action": {
     "default_icon": {
