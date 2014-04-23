@@ -13,7 +13,7 @@ function createModule(url) {
   // code.  Idea copied from
   // http://stackoverflow.com/questions/9515704/building-a-chrome-extension-inject-code-in-a-page-using-a-content-script/9517879#9517879
   var scriptEl = document.createElement('script');
-  scriptEl.src = chrome.extension.getURL('injected.js');
+  scriptEl.src = chrome.runtime.getURL('injected.js');
   scriptEl.addEventListener('load', function () {
     this.parentNode.removeChild(this);
   });
