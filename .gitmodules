@@ -4,3 +4,6 @@
 [submodule "third_party/ninja"]
 	path = third_party/ninja
 	url = http://github.com/martine/ninja
+[submodule "third_party/hawkthorne-journey"]
+	path = third_party/hawkthorne-journey
+	url = https://github.com/hawkthorne/hawkthorne-journey.git
