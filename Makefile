@@ -8,7 +8,7 @@ NACL_SDK_ROOT=${OUT_DIR}/nacl_sdk/pepper_29
 NINJA=${OUT_DIR}/ninja
 NINJA_WRAP=build/ninja-wrap/ninja_wrap.py
 
-all: ${BUILD_NINJA} ${NINJA} ${NACL_SDK_ROOT}
+all: ${BUILD_NINJA} ${NINJA} ${NACL_SDK_ROOT} data/hawkthorne.love
 	@${NINJA}
 
 ${OUT_DIR}:
@@ -25,6 +25,12 @@ ${NACL_SDK_ROOT}: | ${OUT_DIR}
 
 ${BUILD_NINJA}: build/build.nw ${NINJA_WRAP}
 	@python ${NINJA_WRAP} $< -o $@ -D nacl_sdk_root=${NACL_SDK_ROOT}
+
+data/hawkthorne.love: third_party/hawkthorne-journey/build/hawkthorne.love
+	@cp $< $@
+
+third_party/hawkthorne-journey/build/hawkthorne.love:
+	@cd third_party/hawkthorne-journey && make love
 
 clean:
 	@rm -rf ${OUT_DIR} ${BUILD_NINJA}

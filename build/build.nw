@@ -372,28 +372,14 @@ for b in nmf.ForEach(name='test', config=CONFIGS):
 LOVE_DATA_FILES = [
   'background.js',
   'bootstrap.min.css',
-  'context_menu.html',
-  'context_menu.js',
-  'drop.css',
-  'drop.html',
-  'drop.js',
   'filesystem.js',
   'icon128.png',
   'icon16.png',
   'icon48.png',
   'injected.js',
-  'inject.js',
-  'love.html',
-  'love.js',
-  'nyu19_on.png',
-  'nyu19.png',
-  'nyu38_on.png',
-  'nyu38.png',
-  'popup.css',
-  'popup.html',
-  'popup.js',
-  'test.html',
-  'test.js',
+  'hawkthorne.html',
+  'hawkthorne.js',
+  'hawkthorne.love'
 ]
 
 for b in data.ForEach(name='love', inf=LOVE_DATA_FILES):
