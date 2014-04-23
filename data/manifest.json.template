@@ -7,15 +7,7 @@
    "background": {
       "scripts": ["background.js"],
       "persistent": true
-    },
-  },
-  "browser_action": {
-    "default_icon": {
-      "19": "nyu19.png",
-      "38": "nyu38.png"
-    },
-    "default_title": "LÖVELINESS",
-    "default_popup": "popup.html"
+    }
   },
   "icons": {
     "16": "icon16.png",
@@ -31,18 +23,10 @@
     "*://*/*.love",
     "contextMenus",
     "storage",
-    "unlimitedStorage",
-    "webRequest",
-    "webRequestBlocking"
+    "unlimitedStorage"
   ],
   "nacl_modules": [{
     "path": "love_{{config}}.nmf",
     "mime_type": "application/x-love-game"
-  }],
-  "web_accessible_resources": [
-[[for file in resources[:-1]:]]
-    "{{file}}",
-[[]]
-    "{{resources[-1]}}"
-  ]
+  }]
 }

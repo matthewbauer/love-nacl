@@ -311,5 +311,5 @@ loadSettings();
 chrome.app.runtime.onLaunched.addListener(function(launchData) {
   chrome.app.window.create('love.html', {}, function(window) {
     win.contentWindow.launchData = launchData;
-  }
+  });
 });
