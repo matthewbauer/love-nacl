@@ -379,7 +379,7 @@ LOVE_DATA_FILES = [
   'injected.js',
   'hawkthorne.html',
   'hawkthorne.js',
-  'hawkthorne.love'
+  'game.love'
 ]
 
 for b in data.ForEach(name='love', inf=LOVE_DATA_FILES):

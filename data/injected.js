@@ -181,7 +181,7 @@ var moduleMessageHandlers = {
     buttonsEl.style.height = '100px';
     buttonsEl.style.width = '500px';
     centerElement(buttonsEl);
-    var backText = window.history.length > 1 ? 'back' : 'close';
+    var backText = 'close';
     var backButtonEl = createLinkButton(backText);
     var reloadButtonEl = createLinkButton('reload');
     buttonsEl.appendChild(backButtonEl);
@@ -189,10 +189,7 @@ var moduleMessageHandlers = {
     parentEl.appendChild(buttonsEl);
 
     backButtonEl.addEventListener('click', function(e) {
-      if (window.history.length > 1)
-        windowMessages.post('back');
-      else
-        windowMessages.post('close');
+      windowMessages.post('close');
       e.preventDefault();
     });
 

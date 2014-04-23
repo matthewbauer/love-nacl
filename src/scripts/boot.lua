@@ -795,6 +795,7 @@ end
 -- TODO(binji): this is a pretty crappy hack.
 if not socket then socket = {} end
 if not socket.http then socket.http = {} end
+if not ltn12 then ltn12 = {} end
 
 function socket.http.request(url)
 -- TODO(binji): use URLLoader?
@@ -803,6 +804,7 @@ end
 
 package.preload['socket'] = function(modname) return socket end
 package.preload['socket.http'] = function(modname) return socket.http end
+package.preload['ltn12'] = function(modname) return ltn12 end
 
 
 

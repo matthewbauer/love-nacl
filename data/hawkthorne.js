@@ -20,4 +20,4 @@ function createModule(url) {
   document.head.appendChild(script);
 }
 
-createModule(chrome.runtime.getURL('hawkthorne.love'));
+createModule(chrome.runtime.getURL('game.love'));
