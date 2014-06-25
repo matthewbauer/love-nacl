@@ -26,10 +26,4 @@ function loadFileEntry(entry) {
   });
 }
 
-function loadInitialFile(launchData) {
-  if (launchData && launchData.items && launchData.items[0]) {
-    loadFileEntry(launchData.items[0].entry);
-  }
-}
-
-loadInitialFile(launchData);
+loadFileEntry(launchData.items[0].entry);
