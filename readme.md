@@ -1,6 +1,4 @@
-LÖVELINESS is a port of LÖVE to Native Client. Wow!
-
-[![Build Status](https://travis-ci.org/binji/love-nacl.png?branch=master)](https://travis-ci.org/binji/love-nacl)
+This is a port of Journey to the Center of Hawkthorne for Chrome OS.
 
 Setting up the Repo
 -------------------
@@ -8,8 +6,9 @@ Setting up the Repo
 You'll probably need linux (or something linux-like).
 
     # Find a good place to put love-nacl
-    $ git clone git://github.com/binji/love-nacl
+    $ git clone git://github.com/matthewbauer/love-nacl
     $ cd love-nacl
+    $ git checkout hawkthorne
     $ git submodule init
     $ git submodule update
 
