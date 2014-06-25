@@ -81,6 +81,7 @@ var moduleMessageHandlers = {
   setWindow: function(width, height) {
     embedEl.width = parseInt(width, 10) + 'px';
     embedEl.height = parseInt(height, 10) + 'px';
+    window.resizeTo(parseInt(width, 10), parseInt(height, 10));
     onWindowResize();
   },
 
