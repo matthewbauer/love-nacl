@@ -20,4 +20,6 @@ function createModule(url) {
   document.head.appendChild(script);
 }
 
-createModule(chrome.runtime.getURL('game.love'));
+document.addEventListener('DOMContentLoaded', function () {
+  createModule(chrome.runtime.getURL('game.love'));
+});
