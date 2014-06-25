@@ -1,6 +1,6 @@
 {
   "name": "LÖVELINESS",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "manifest_version": 2,
   "description": "Play LÖVE games in your browser!",
   "app": {
@@ -18,15 +18,28 @@
   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqquUnjmyCUo+Cug9qCF6Fz1d5e+d94Z7zwNndJ4QDxXW9wKZo8u6/GCNB5QRSfKdeeIQxIkzHn8G8zelOmdgdiA7AxwIEFrp1XfFFdM4Mf+aIUC69wkG04c0O1BbxsJyeDO6e46dFZwhatHcVUqOm5cRHv3z7XjixAnx3r8+b7QIDAQAB",
 [[]]
   "permissions": [
-    "*://*.love2d.org/*",
-    "*://*.dropboxusercontent.com/*.love?*",
-    "*://*/*.love",
-    "contextMenus",
     "storage",
-    "unlimitedStorage"
+    "unlimitedStorage",
+    "fileSystem",
+    "*://*/*.love"
   ],
   "nacl_modules": [{
     "path": "love_{{config}}.nmf",
     "mime_type": "application/x-love-game"
-  }]
+  }],
+  "url_handlers": {
+    "play_love": {
+      "matches": [
+        "*://*/*.love"
+      ],
+      "title": "Play LÖVE Game"
+    }
+  },
+  "file_handlers": {
+    "play_love": {
+      "types": [
+        "application/x-love-game"
+      ]
+    }
+  }
 }

@@ -13,7 +13,7 @@ function createModule(url) {
   // code.  Idea copied from
   // http://stackoverflow.com/questions/9515704/building-a-chrome-extension-inject-code-in-a-page-using-a-content-script/9517879#9517879
   var script = document.createElement('script');
-  script.src = chrome.extension.getURL('injected.js');
+  script.src = chrome.runtime.getURL('injected.js');
   script.addEventListener('load', function () {
     this.parentNode.removeChild(this);
   });
@@ -26,4 +26,10 @@ function loadFileEntry(entry) {
   });
 }
 
-loadFileEntry(launchData.items[0].entry);
+document.addEventListener('DOMContentLoaded', function() {
+  if (launchData.items) {
+    loadFileEntry(launchData.items[0].entry);
+  } else if (launchData.url) {
+    createModule(launchData.url);
+  }
+})
