@@ -9,7 +9,7 @@ var settings = {
 };
 
 chrome.app.runtime.onLaunched.addListener(function(launchData) {
-  chrome.app.window.create('hawkthorne.html', {innerBounds: {width: 1056, height: 700}});
+  chrome.app.window.create('hawkthorne.html', {});
 });
 
 chrome.runtime.onConnect.addListener(onPortConnected);
