@@ -34,6 +34,7 @@ third_party/hawkthorne-journey/build/hawkthorne.love:
 
 clean:
 	@rm -rf ${OUT_DIR} ${BUILD_NINJA}
+	@cd third_party/hawkthorne-journey && make clean
 
 runclean: all
 	@rm -rf ${DATA_DIR}
