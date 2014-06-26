@@ -8,7 +8,6 @@ You'll probably need linux (or something linux-like).
     # Find a good place to put love-nacl
     $ git clone git://github.com/matthewbauer/love-nacl
     $ cd love-nacl
-    $ git checkout hawkthorne
     $ git submodule init
     $ git submodule update
 
