@@ -165,42 +165,7 @@ var moduleMessageHandlers = {
   },
 
   bye: function() {
-    // User is quitting.
-    parentEl.removeChild(embedEl);
-
-    function createLinkButton(text) {
-      var el = document.createElement('a');
-      el.setAttribute('href', '#');
-      el.style.display = 'block';
-      el.style.fontSize = '30px';
-      el.style.textAlign = 'center';
-      el.textContent = text;
-      return el;
-    }
-
-    var buttonsEl = document.createElement('div');
-    buttonsEl.style.height = '100px';
-    buttonsEl.style.width = '500px';
-    centerElement(buttonsEl);
-    var backText = window.history.length > 1 ? 'back' : 'close';
-    var backButtonEl = createLinkButton(backText);
-    var reloadButtonEl = createLinkButton('reload');
-    buttonsEl.appendChild(backButtonEl);
-    buttonsEl.appendChild(reloadButtonEl);
-    parentEl.appendChild(buttonsEl);
-
-    backButtonEl.addEventListener('click', function(e) {
-      if (window.history.length > 1)
-        windowMessages.post('back');
-      else
-        windowMessages.post('close');
-      e.preventDefault();
-    });
-
-    reloadButtonEl.addEventListener('click', function(e) {
-      windowMessages.post('reload');
-      e.preventDefault();
-    });
+    window.close();
   }
 };
 
