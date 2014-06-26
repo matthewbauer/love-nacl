@@ -86,29 +86,7 @@ var moduleMessageHandlers = {
   },
 
   download: function(downloaded, max) {
-    downloaded = parseInt(downloaded, 10);
-    max = parseInt(max, 10);
-
-    if (max) {
-      setMessage('downloading '+(downloaded / max * 100).toFixed(0)+'%');
-    } else {
-      function humanReadable(size) {
-        var K = 1024;
-        var M = 1024 * K;
-        var G = 1024 * M;
-        if (size > G) {
-          return (size / G).toFixed(1) + 'G';
-        } else if (size > M) {
-          return (size / M).toFixed(1) + 'M';
-        } else if (size > K) {
-          return (size / K).toFixed(1) + 'K';
-        } else {
-          return size + 'B';
-        }
-      }
-
-      setMessage('downloaded '+humanReadable(downloaded));
-    }
+    setMessage('loading...');
   },
 
   OK: function() {
