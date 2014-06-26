@@ -15,7 +15,8 @@
   },
   "permissions": [
     "storage",
-    "unlimitedStorage"
+    "unlimitedStorage",
+    "syncFileSystem"
   ],
   "nacl_modules": [{
     "path": "love_{{config}}.nmf",
