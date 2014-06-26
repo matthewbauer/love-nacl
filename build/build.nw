@@ -371,7 +371,6 @@ for b in nmf.ForEach(name='test', config=CONFIGS):
 #
 LOVE_DATA_FILES = [
   'background.js',
-  'bootstrap.min.css',
   'filesystem.js',
   'icon128.png',
   'icon16.png',
@@ -416,13 +415,13 @@ for b in Select('love-data'):
   n.Tag('package')
 
 # Copy .nexes to packagedir, stripped.
-for b in Select('love-exe', 'test-exe').And(keys=release_keys):
+for b in Select('love-exe').And(keys=release_keys):
   n = Build('out/package/' + Filename(b.outputs).Base, 'strip', b.outputs)
   n.Set('strip', '$strip-' + b.keys['arch'])
   n.Tag('package')
 
 # Copy .nmfs to packagedir
-for b in Select('love-nmf', 'test-nmf').And(keys=release_keys):
+for b in Select('love-nmf').And(keys=release_keys):
   n = Build('out/package/' + Filename(b.outputs).Base, 'cp', b.outputs)
   n.Tag('package')
 
