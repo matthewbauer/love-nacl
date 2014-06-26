@@ -40,12 +40,12 @@ runclean: all
 	@"${CHROME_PATH}" ${NEXE_ARGS}
 
 run: all
-	@"${CHROME_PATH}" --load-extension=${PWD}/${OUT_DIR} ${CHROME_ARGS}
+	@"${CHROME_PATH}" --load-and-launch-app=${PWD}/${OUT_DIR} ${CHROME_ARGS}
 
 run-package: all
-	@"${CHROME_PATH}" --load-extension=${PWD}/${OUT_DIR}/package ${CHROME_ARGS}
+	@"${CHROME_PATH}" --load-and-launch-app=${PWD}/${OUT_DIR}/package ${CHROME_ARGS}
 
 debug: all
-	@"${CHROME_PATH}" --load-extension=${PWD}/${OUT_DIR} ${CHROME_ARGS} --enable-nacl-debug
+	@"${CHROME_PATH}" --load-and-launch-app=${PWD}/${OUT_DIR} ${CHROME_ARGS} --enable-nacl-debug
 
 .PHONY: all clean runclean run run-package debug
