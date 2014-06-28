@@ -34,14 +34,14 @@ function queryUsageAndQuota(onSuccess, onError) {
 }
 
 function requestFileSystem(size, onSuccess, onError) {
-  chrome.syncFileSystem.requestFileSystem(function (fs) {
-    if (chrome.runtime.lastError) {
+  //chrome.syncFileSystem.requestFileSystem(function (fs) {
+  //  if (chrome.runtime.lastError) {
       return window.webkitRequestFileSystem(
           window.PERSISTENT, size, onSuccess, onError);
-    } else {
-      onSuccess(fs);
-    }
-  });
+  //  } else {
+  //    onSuccess(fs);
+  //  }
+  //});
 }
 
 function onMessageBack(data, response) {
