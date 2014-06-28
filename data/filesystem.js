@@ -39,7 +39,7 @@ function requestFileSystem(size, onSuccess, onError) {
       return window.webkitRequestFileSystem(
           window.PERSISTENT, size, onSuccess, onError);
     } else {
-      onSuccess(filesystem);
+      onSuccess(fs);
     }
   });
 }
