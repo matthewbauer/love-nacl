@@ -1,5 +1,6 @@
 (function () {
 
+var fileSystemSize = 5 * 1024 * 1024;  // 5M should be enough for anybody.
 var messageMap = {
   // HACK(binji):  these messages aren't filesystem related. Probably should
   // rename this file...
@@ -10,14 +11,36 @@ var messageMap = {
   'getFiles': onMessageGetFiles,
   'queryFileSystem': onMessageQueryFilesystem,
   'requestFileSystem': onMessageRequestFileSystem,
-};
+}
 
-var filesystem;
+function requestQuota(size, onSuccess, onError) {
+  if (navigator.webkitPersistentStorage) {
+    return navigator.webkitPersistentStorage.requestQuota(
+        size, onSuccess, onError);
+  } else {
+    return window.webkitStorageInfo.requestQuota(
+        window.PERSISTENT, size, onSuccess, onError);
+  }
+}
 
-function requestFileSystem(onSuccess, onError) {
-  chrome.syncFileSystem.requestFileSystem(function(fs){
-    filesystem = fs;
-    onSuccess(fileSystem);
+function queryUsageAndQuota(onSuccess, onError) {
+  if (navigator.webkitPersistentStorage) {
+    return navigator.webkitPersistentStorage.queryUsageAndQuota(
+        onSuccess, onError);
+  } else {
+    return window.webkitStorageInfo.queryUsageAndQuota(
+        window.PERSISTENT, onSuccess, onError);
+  }
+}
+
+function requestFileSystem(size, onSuccess, onError) {
+  chrome.syncFileSystem.requestFileSystem(function (fs) {
+    if (chrome.runtime.lastError) {
+      return window.webkitRequestFileSystem(
+          window.PERSISTENT, size, onSuccess, onError);
+    } else {
+      onSuccess(filesystem);
+    }
   });
 }
 
@@ -88,7 +111,7 @@ function onMessageGetFiles(data, response) {
     response({done: true});
   }
 
-  requestFileSystem(onRequestSuccess, onRequestError);
+  requestFileSystem(fileSystemSize, onRequestSuccess, onRequestError);
 }
 
 function onMessageQueryFilesystem(data, response) {
@@ -105,10 +128,7 @@ function onMessageQueryFilesystem(data, response) {
     response({ok: false});
   }
 
-  if (filesystem)
-    chrome.syncFileSystem.getUsageAndQuota(filesystem, onSuccess);
-  else
-    onError(null);
+  queryUsageAndQuota(onSuccess, onError);
 }
 
 function onMessageRequestFileSystem(data, response) {
@@ -119,7 +139,8 @@ function onMessageRequestFileSystem(data, response) {
   function onError(err) {
     response({ok: false});
   }
-  onSuccess();
+
+  requestQuota(fileSystemSize, onSuccess, onError);
 }
 
 function onWindowMessage(e) {
