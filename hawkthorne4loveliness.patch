@@ -1,0 +1,39 @@
+# https://github.com/hawkthorne/hawkthorne-journey cb0db507e46292e30786d95d2c2d6e850272ef46
+diff --git a/src/hawk/sparkle/windows.lua b/src/hawk/sparkle/windows.lua
+index 919725c..835a6f8 100644
+--- a/src/hawk/sparkle/windows.lua
++++ b/src/hawk/sparkle/windows.lua
+@@ -1,5 +1,5 @@
+ local os = require "os"
+-local url = require "socket.url"
++--local url = require "socket.url"
+ local urllib = require "hawk/sparkle/urllib"
+ local utils = require "utils"
+ 
+@@ -38,9 +38,10 @@ function windows.getDownload(item)
+ end
+ 
+ function windows.basename(link)
+-  local parsed_url = url.parse(link)
+-  local parts = utils.split(parsed_url.path, "/")
+-  return table.remove(parts)
++--  local parsed_url = url.parse(link)
++--  local parts = utils.split(parsed_url.path, "/")
++--  return table.remove(parts)
++  return nil
+ end
+ 
+ -- Remove all files in a directory. The directory must be in the game save
+diff --git a/src/options.lua b/src/options.lua
+index 5880ec8..4076fc1 100644
+--- a/src/options.lua
++++ b/src/options.lua
+@@ -82,7 +82,7 @@ local MENU = {
+ 
+   }},
+   {name = 'VIDEO', page = {
+-    {name = 'FULLSCREEN'},
++    --{name = 'FULLSCREEN'},
+     {name = 'SHOW FPS'},
+     {name = 'BACK TO OPTIONS'},
+   }},
