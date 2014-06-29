@@ -29,7 +29,7 @@ ${BUILD_NINJA}: build/build.nw ${NINJA_WRAP}
 data/game.love: third_party/hawkthorne-journey/build/hawkthorne.love
 	@cp $< $@
 
-third_party/hawkthorne-journey/build/hawkthorne.love:
+third_party/hawkthorne-journey/build/hawkthorne.love: third_party/hawkthorne-journey/*
 	@cd third_party/hawkthorne-journey && make love
 
 clean:
