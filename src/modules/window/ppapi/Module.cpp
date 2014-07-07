@@ -60,7 +60,7 @@ class Instance : public pp::Instance {
   void Filesystem_CopyFile(int32_t, const std::string& path);
   void Filesystem_MakeDir(int32_t, const std::string& path);
 
-  std::string url_;
+//  std::string url_;
 
   pp::URLRequestInfo url_request_;
   pp::URLLoader url_loader_;
@@ -99,7 +99,7 @@ bool Instance::Init(uint32_t argc, const char* argn[], const char* argv[]) {
   main_loop_thread_.Start();
   filesystem_thread_.Start();
 
-  std::string src;
+/*  std::string src;
   std::string love_src;
   for (uint32_t i = 0; i < argc; ++i) {
     if (!strcmp(argn[i], "love_src")) {
@@ -120,9 +120,13 @@ bool Instance::Init(uint32_t argc, const char* argn[], const char* argv[]) {
     // Loading using HandleDocumentLoad, wait for call before starting MainLoop.
   }
 
-  url_ = src;
+  url_ = src;*/
 
-  mount("", "/temporary", "memfs", 0, "");
+  main_loop_thread_.message_loop().PostWork(
+      callback_factory_.NewCallback(&Instance::MainLoop_Initialize));
+
+  //mount("", "/temporary", "memfs", 0, "");
+  mount("./", "/temporary", "httpfs", 0, "");
   mount("", "/persistent", "memfs", 0, "");
   // HACK(binji): copy from persistent to html5fs to backup... once html5fs can
   // work with physfs, get rid of this nastiness.
@@ -206,13 +210,13 @@ void Instance::MainLoop_Initialize(int32_t) {
   setvbuf(stdout, NULL, _IOLBF, 0);
   setvbuf(stderr, NULL, _IOLBF, 0);
 
-  MainLoop_Download();
+  //MainLoop_Download();
 
   // Notify the JavaScript that we're OK!
   PostMessage("OK");
 }
 
-void Instance::MainLoop_Download() {
+/*void Instance::MainLoop_Download() {
   int32_t result;
   if (url_loader_.is_null()) {
     printf("Download: url_loader_ is null?\n");
@@ -271,7 +275,7 @@ done:
   fclose(outf);
   url_loader_ = pp::URLLoader();
   return;
-}
+}*/
 
 void Instance::MainLoop_Run(int32_t) {
   std::vector<const char*> args;
